@@ -47,7 +47,8 @@ function pinoLogger (opts, stream) {
         res: this,
         err: err || this.err || new Error('failed with status code ' + this.statusCode),
         responseTime: responseTime
-      }, 'request errored')
+      }, err ? err.message :
+          this.err ? this.err.message : 'request errored')
       return
     }
 
